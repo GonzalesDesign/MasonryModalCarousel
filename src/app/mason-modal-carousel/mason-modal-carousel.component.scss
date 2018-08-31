@@ -1,0 +1,100 @@
+
+
+
+
+/*----------------------------------------=
+=---=|    Import: General styling    |=---=
+=-----------------------------------------*/
+@import './../../styles.scss';
+
+// @import "@material/image-list/mdc-image-list";
+
+/*---- Masonry Image List ----*/
+.my-masonry-image-list {
+    // @include mdc-image-list-masonry-columns(2);
+    max-width: 1200px;
+    // border: 1px solid rgba(129, 25, 25, 0.479)
+}
+@media only screen and (max-width: 639px) and (min-width: 400px) {
+    // @media (min-width: 800px; max-width: 1399px;) {
+        .my-masonry-image-list {
+            @include mdc-image-list-masonry-columns(1);
+        }
+    }
+@media only screen and (max-width: 1023px) and (min-width: 640px) {
+// @media (min-width: 800px; max-width: 1399px;) {
+    .my-masonry-image-list {
+        @include mdc-image-list-masonry-columns(2);
+    }
+}
+@media (min-width: 1024px) {
+    .my-masonry-image-list {
+        @include mdc-image-list-masonry-columns(3);
+    }
+}
+
+.steamLogo {
+    // display: flex;
+    // align-self: center;
+    // display: block;
+    // margin: 0 auto;
+    // height: 200px;
+    // width: 100%;
+    // border: 1px solid rgb(226, 23, 245);
+    height: 300px;
+    // width: 100%;
+    background-image: url("../../assets/images/steampunk/logo/photo3.png");
+    background-repeat: no-repeat;
+    background-size: contain ;
+    background-position-x: center;
+}
+.masong {
+    // display: flex;
+    // justify-content: center;
+    border: 0px solid rgb(251, 240, 252);
+    // padding-top: 100px;
+    // padding: 10px;
+    margin: 20px;
+
+
+}
+
+/* .rlg-photo-kontainerX {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border: 1px solid rgb(69, 97, 97);
+} */
+
+.rlg-photo-kontainer {
+    // display: flex;
+    // justify-content: flex-end;
+    position: relative;
+    border: 10px solid rgb(238, 233, 233);
+    // margin-top: 100px;
+    background-color: aliceblue;
+    // padding: 10px;
+    overflow: hidden;
+
+    .rlg-photo-title-kontainer-bg {
+        display: flex;
+        justify-content: center;
+        // align-content: flex-end;
+        position: absolute;
+        // top: 0;
+        bottom: 0;
+        height: 1.2rem;
+        width: 100%;
+        padding: 1em;
+        z-index: 101;
+        background-color: rgba($mdc-theme-primary, 0.557);
+        border-top: 3px solid rgba($mdc-theme-secondary, 0.557);
+
+        .rlg-photo-title {
+            font-family: $rlg-round-font;
+            font-size: 1.2rem;
+            color: white;
+            text-transform: uppercase;
+        }
+    }
+}

@@ -1,0 +1,86 @@
+
+
+
+
+<!-- Loader component -->
+<app-loader-svg></app-loader-svg>
+
+<!-- MASONRY -->
+<!-- <div>{{errorMsg}}</div> -->
+<div id="main-kontainer-id">
+  <div class="steamLogo">
+      <!-- <img class="mdc-image-list__image" src="../../assets/images/steampunk/logo/photo3.png"> -->
+  </div>
+
+    <div class="masong">
+        <div>
+          <!-- <img src="../../assets/images/steampunk/logo/photo3.png" alt="steampunk logo" class="steamLogo"> -->
+          <!-- <img class="mdc-image-list__image steamLogo" src="../../assets/images/steampunk/logo/photo3.png"> -->
+        </div>
+
+      <ul class="mdc-image-list
+                mdc-image-list--masonry
+                my-masonry-image-list
+                rlg-photo-kontainerXX">
+        <!-- <li *ngFor="let photo of photos; let i =index"
+            class="mdc-image-list__item"
+            mdc-ripple
+            [style.backgroundImage]="'url('+ photo.imageUrl +')'"
+            [style.background-repeat]= "'no-repeat'"
+            [style.backgroundSize]="'cover'"
+            [style.width.px]="300"
+            [style.height.px]="500"
+            [style.cursor]="'pointer'"
+            (click)="fOpenModal(photo.popImagePath, photo.popImages)"
+            >
+        </li> -->
+
+
+
+
+        <!-- <img class="mdc-image-list__image" src="{{aImages[0].imagePath + aImages[0].images[0].value}}"> -->
+        <li *ngFor="let foto of aImages; let i =index"
+            class="mdc-image-list__item">
+            <mdc-card-primary-action mdc-ripple
+            (click)="fOpenModal(foto.id, foto.imagePath, foto.images, foto.title, foto.description)"
+            >
+            <div class="rlg-photo-kontainer">
+              <img class="mdc-image-list__image" src="{{aImages[i].imagePath + aImages[i].images[0].value}}">
+              <div class="rlg-photo-title-kontainer-bg">
+                <div class="mdc-image-list__supporting">
+                  <span class="mdc-image-list__label
+                              rlg-photo-title
+                              rlg-font-shadow1">
+                              {{aImages[i].title}}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- (click)="fOpenModal(foto.popImagePath, foto.popImages, foto.imageName, foto.description)"
+              <mdc-card-primary-action mdc-ripple (click)="firedUp()"> -->
+              <!-- <mdc-card-primary-action mdc-ripple (click)="openCard(foto.imageUrl)"> -->
+              <div class="rlg-photo-kontainer">
+
+                <span *ngFor="let image of foto.images; let j = index">
+                  <!-- {{foto.imagePath + image.value}} -->
+                  <!-- {{foto.imagePath}} -->
+                  <!-- <img class="mdc-image-list__image" src="{{foto.imagePath + image.value}}"> -->
+
+                  <!-- <div class="rlg-photo-title-kontainer-bg">
+                    <div class="mdc-image-list__supporting">
+                      <span class="mdc-image-list__label
+                                  rlg-photo-title
+                                  rlg-font-shadow1">
+                                  {{foto.title}}
+                      </span>
+                    </div>
+                  </div> -->
+                </span>
+
+              </div>
+            </mdc-card-primary-action>
+        </li>
+      </ul>
+  </div>
+</div>

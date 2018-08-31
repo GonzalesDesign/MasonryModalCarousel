@@ -1,0 +1,115 @@
+<!-- Loader component -->
+<!-- <app-loader-svg></app-loader-svg> -->
+
+<!-- <div id="modal-kontainer-id #modalKontainerChild" class="modal-kontainer"> -->
+  <div  id="modalKontainerId"
+        #modalKontainerChild
+        class="modalKontainer"
+        [style.width.vw]='70'
+        >
+        <!--
+              [style.display]="'flex'"
+              [style.position]="'absolute'"
+              [style.width.vw]='50'
+              [style.height.vh]='fotoHeight' -->
+
+      <div class="rlg-pop-title"
+           [style.textTransform]="'uppercase'">
+           CATEGORY: {{titolo}}
+      </div>
+      <br>
+      <ul #carouselKontainerChild
+          id="carousel-kontainer-id"
+          class="carousel-kontainer"
+          [style.display]="'flex'"
+          [style.width]= "'100'"
+          [style.margin]="'0'"
+          [style.padding]="'0'"
+          [style.overflow]="'hidden'"
+          [style.border]="'1px solid red'"
+          >
+          <!--[style.width]= "'carouselKontainerWidth'" -->
+
+          <li class="image-kontainer"
+              *ngFor="let foto of imageToLoad; let i = index"
+              [style.listStyle]="'none'">
+              <!-- class="imageCarousel"
+              [style.width.px]= 'fotoWidth'
+              [style.listStyle]="'none'"
+              [style.width.vw]="'70'"
+              [style.height.vh]="'60'"
+              [style.border]="'1px solid grey'"
+              > -->
+              <!-- [style.display]="'flex'"
+                  [style.justifyContent]="'center'" -->
+
+              <div  class="bg-image"
+                    [style.backgroundImage]="'url(' + popImagePath + foto.value + ')'"
+                    [style.background-repeat]="'no-repeat'"
+                    [style.backgroundSize]="'cover'"
+                    [style.width.px]= 'fotoWidth'
+                    [style.height.vh]='fotoHeight'
+                    [style.backgroundColor]="'red'"
+                    [style.backgroundPositionX.%]="50"
+                    [style.border]="'0px solid blue'">
+                    <!--
+                    [style.width.px]= 'fotoWidth'
+                        foto: {{foto.value}}
+                    <br> Images: {{imageToLoad[i].value}} -->
+              </div>
+          </li>
+      </ul>
+
+      <!--= Carousel slider buttons =-->
+      <div  id="arrow-buttons-kontainer-id" class="arrow-buttons-kontainer"
+            [style.width.px]= 'carouselKontainerWidth'
+            [style.height.vh]= '100'
+            [style.top.px]= '0'
+            [style.position]= "'absolute'"
+            >
+            <!-- [style.width.px]= 'carouselKontainerWidth'
+                [style.height.vh]='fotoHeight'
+                [style.position]="'absolute'"
+            -->
+
+
+          <div id="left-button-kontainer-id" class="left-button-kontainer">
+              <button mdcIconButton class="rlg-arrowIcon
+                                           rlg-left-arrow
+                                           rlg-font-dark-shadow
+                                           rlg-primary-mid-color"
+                                           (click)="fSlideRight()"
+                                           (mouseover)="hideTextLabelLeft=false"
+                                           (mouseleave)="hideTextLabelLeft=true">
+                                           arrow_back_ios
+              </button>
+              <span class="left-button-text
+                           rlg-primary-font
+                           rlg-font-mid-shadow"
+                           [ngStyle]="{opacity: hideTextLabelLeft==false  ? '1' : '0' }">
+                           PREVIOUS
+              </span>
+          </div>
+
+        <div id="right-button-kontainer-id"
+              class="right-button-kontainer"
+              [style.left.px]= 'rightArrowButtonsKontainerXPos'>
+              <button mdcIconButton class="rlg-arrowIcon
+                                           rlg-right-arrow
+                                           rlg-font-dark-shadow
+                                           rlg-primary-mid-color"
+                                           (click)="fSlideLeft()"
+                                           (mouseover)="hideTextLabelRight=false"
+                                           (mouseleave)="hideTextLabelRight=true">
+                                           arrow_forward_ios
+              </button>
+              <span class="right-button-text
+                           rlg-primary-font
+                           rlg-font-mid-shadow"
+                           [ngStyle]="{opacity: hideTextLabelRight==false  ? '1' : '0' }">
+                           NEXT
+              </span>
+        </div>
+      </div>
+
+</div>

@@ -1,0 +1,111 @@
+[
+    {
+        "id": 0,
+        "title": "Fashion: Women",
+        "imagePath": "./../../assets/images/steampunk/fashion/women/",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" },
+            { "value": "photo5.jpg" },
+            { "value": "photo6.jpg" },
+            { "value": "photo7.jpg" },
+            { "value": "photo8.jpg" },
+            { "value": "photo9.jpg" },
+            { "value": "photo10.jpg"}
+        ],
+        "description": "0 Steampunk is a subgenre of science fiction or science fantasy that incorporates technology and aesthetic designs inspired by 19th-century industrial steam-powered machinery."
+    },
+    {
+        "id": 1,
+        "title": "Fashion: Men",
+        "imagePath": "./../../assets/images/steampunk/fashion/men/",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" },
+            { "value": "photo5.jpg" },
+            { "value": "photo6.jpg" },
+            { "value": "photo7.jpg" },
+            { "value": "photo8.jpg" }
+        ],
+        "description": "1 Steampunk is a subgenre of science fiction or science fantasy that incorporates technology and aesthetic designs inspired by 19th-century industrial steam-powered machinery."
+    },
+    {
+        "id": 2,
+        "title": "Fashion: Couples",
+        "imagePath": "./../../assets/images/steampunk/fashion/couples/",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" }
+        ],
+        "description": "2 Steampunk is a subgenre of science fiction or science fantasy that incorporates technology and aesthetic designs inspired by 19th-century industrial steam-powered machinery."
+    },
+    {
+        "id": 3,
+        "title": "Clocks",
+        "imagePath": "./../../assets/images/steampunk/clocks//",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" },
+            { "value": "photo5.jpg" },
+            { "value": "photo6.jpg" },
+            { "value": "photo7.jpg" }
+        ],
+        "description": "3 Steampunk is a subgenre of science fiction or science fantasy that incorporates technology and aesthetic designs inspired by 19th-century industrial steam-powered machinery."
+    },
+    {
+        "id": 4,
+        "title": "Gears",
+        "imagePath": "../../assets/images/steampunk/gears/",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" },
+            { "value": "photo5.jpg" }
+        ],
+        "description": "4 Steampunk most recognizably features anachronistic technologies or retro-futuristic inventions as people in the 19th century might have envisioned them, and is likewise rooted in the era's perspective on fashion, culture, architectural style, and art."
+    },
+    {
+        "id": 5,
+        "title": "Cars",
+        "imagePath": "../../assets/images/steampunk/cars/",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" },
+            { "value": "photo5.jpg" }
+        ],
+        "description": "Steampunk most recognizably features anachronistic technologies or retro-futuristic inventions as people in the 19th century might have envisioned them, and is likewise rooted in the era's perspective on fashion, culture, architectural style, and art."
+    },
+    {
+        "id": 6,
+        "title": "Pets",
+        "imagePath": "../../assets/images/steampunk/pets/",
+        "images": [
+            { "value": "photo0.jpg" },
+            { "value": "photo1.jpg" },
+            { "value": "photo2.jpg" },
+            { "value": "photo3.jpg" },
+            { "value": "photo4.jpg" },
+            { "value": "photo5.jpg" },
+            { "value": "photo5.jpg" }
+        ],
+        "description": "Steampunk most recognizably features anachronistic technologies or retro-futuristic inventions as people in the 19th century might have envisioned them, and is likewise rooted in the era's perspective on fashion, culture, architectural style, and art."
+    }
+
+]

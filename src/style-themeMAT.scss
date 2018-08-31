@@ -1,0 +1,38 @@
+/******************************************************
+* Project: R.Lloyd Gonzales Portfolio Website
+* URL: RLGonzales.com
+* Contact: rolandolloyd@gmail.com
+* Copyright © 2018 GonzalesDesign
+* Platform: Angular 6
+* Component: Masonry Modal MAT scss
+* Note: https://material.angular.io/
+        These are styles using material 2 library
+        and has to be seperate from mdc-web library.
+******************************************************/
+
+
+/*----------------------------------------=
+=---=|     Import: MAT Library      |=---=
+=-----------------------------------------*/
+@import '~@angular/material/theming';
+@include mat-core();
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+/*----------------------------------------=
+=---=|       Import: Shared Theme       |=---=
+=-----------------------------------------*/
+@import './style-themeShared.scss';
+
+
+/*---= pop up background overlay, background color =---*/
+.cdk-overlay-dark-backdrop {
+    background: rgba($rlgColorPrimary, .75);
+}
+
+/*---= pop up auto size =---*/
+/* #cdk-overlay-0 {
+    max-width: 100%;
+}
+.cdk-overlay-pane {
+    max-width: 100%;
+} */
