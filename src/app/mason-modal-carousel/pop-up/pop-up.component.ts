@@ -63,9 +63,9 @@ export class PopUpComponent implements OnInit, AfterViewInit, AfterViewChecked {
   }
 
   public fSliderInit() {
-    console.log('this.carouselChildKontainer: ', this.carouselChildKontainer);
-    console.log('this.carouselChildKontainer: ', this.carouselChildKontainer.nativeElement.nodeName);
-    console.log('this.carouselChildKontainer: ', this.carouselChildKontainer.nativeElement.clientWidth);
+    // console.log('this.carouselChildKontainer: ', this.carouselChildKontainer);
+    // console.log('this.carouselChildKontainer: ', this.carouselChildKontainer.nativeElement.nodeName);
+    // console.log('this.carouselChildKontainer: ', this.carouselChildKontainer.nativeElement.clientWidth);
     /* setTimeout fixes the ff Error: ExpressionChangedAfterItHasBeenCheckedError */
     const btnKontainerWidth = 200;
     const btnKontainerPadding = 28;
