@@ -7,7 +7,7 @@ import { FunksionsService } from './funksions.service';
 })
 export class CarouselService {
 
-  public commonCounter = 0;
+  public commonCounter: number;
   public xPos = 0;
   public endOfStrip: boolean;
   // public imgCount = 19; // photos.length from json
@@ -48,69 +48,63 @@ export class CarouselService {
     // this.fImageWidth(img, this.displayMaskWidth);
   } */
 
-  public fSlideCarousel(elem, imgWidth, imgsToDisplay){
+  public fSlideCarousel2(elem, imgWidth, imgsToDisplay) {
     this.commonCounter--; // click counter
     const displayMaskWidth = (imgWidth * imgsToDisplay); // displayMaskWidth: photo strip mask width
     this.xPos = (displayMaskWidth * this.commonCounter); // xPos: photo strip horizontal position
     TweenMax.to(elem, 1, {x: this.xPos, ease: Power2.easeInOut}); // positioning photo strip horizontally
   }
-  public fSlideCarousel2(elem, slideDirection, imgWidth, imgsToDisplay, imgKontainerWidth) {
-    // if right button is clicked, image kontainer slides left
-    const displayMaskWidth = (imgWidth * imgsToDisplay);
-    // console.log('displayMaskWidth: ', displayMaskWidth);
 
+  public fSlideCarousel(elem, slideDirection, imgWidth, imgsToDisplay, imgKontainerWidth) {
+
+    const displayMaskWidth = (imgWidth * imgsToDisplay); // carousel mask width
+
+    /*--= if right button is clicked, image kontainer slides left =--*/
     if ( slideDirection === 'left' ) {
       this.commonCounter--;
       this.xPos = (displayMaskWidth * this.commonCounter);
       // this.fShowMe(this.leftArrowIcon); // left arrow is disabled inititally
-      this._funksions.fElementVisibility(this.leftArrowIcon, 'visible');
+      this._funksions.fElementVisibility(this.leftArrowIcon, 'visible'); // show hidden left arrow
 
-      // console.log('slideDirection: ', slideDirection);
-      // console.log('displayMaskWidth: ', displayMaskWidth);
+      console.log('slide=left: commonCounter: ', this.commonCounter);
+      console.log('slideDirection: ', slideDirection);
 
-      // console.log('this.commonCounter: ', this.commonCounter);
-      // console.log('this.xPos: ', this.xPos);
 
-      // if (this.xPos <= -(imgKontainerWidth - displayMaskWidth)) {
-      //   this.xPos = -(imgKontainerWidth - displayMaskWidth);
-      //   // this.fHideMe(this.rightArrowIcon);
-      //   this._funksions.fElementVisibility(this.rightArrowIcon, 'hidden');
-      // }
-    // else if left button is clicked, image kontainer slides right
+    /*--= else if left button is clicked, image kontainer slides right =--*/
     } else if ( slideDirection === 'right' ) {
       this.commonCounter++;
       this.xPos = (displayMaskWidth * this.commonCounter);
-      this._funksions.fElementVisibility(this.rightArrowIcon, 'visible');
-      // console.log('slideDirection: ', slideDirection);
-      // console.log('this.commonCounter: ', this.commonCounter);
-      // console.log('this.xPos: ', this.xPos);
+      this._funksions.fElementVisibility(this.rightArrowIcon, 'visible'); // show hidden right arrow
 
-      // if (this.xPos >= 0) {
-      //   this.xPos = 0;
-      //   this.commonCounter = 0;
-      //   this._funksions.fElementVisibility(this.leftArrowIcon, 'hidden');
-      // }
-    } else if ( slideDirection === 'none' ) {
+      console.log('slide=right: commonCounter: ', this.commonCounter);
+
+    } else if ( slideDirection === 'none' ) { // ???
       this.commonCounter = this.commonCounter;
       this.xPos = (displayMaskWidth * this.commonCounter);
-      // console.log('this.commonCounter: ', this.commonCounter);
+      console.log('slide=none: commonCounter: ', this.commonCounter);
     }
+
     /*--- When to hide the left and right arrows ---*/
     if (this.xPos >= 0) {
       this.xPos = 0;
       this.commonCounter = 0;
+      this.endOfStrip = false;
+      // console.log('Hide left arrow: ', this.xPos);
       this._funksions.fElementVisibility(this.leftArrowIcon, 'hidden');
+
     } else if (this.xPos <= -(imgKontainerWidth - displayMaskWidth)) {
     // } else if ((this.xPos <= -(imgKontainerWidth - displayMaskWidth)) && (this.endOfStrip === true )) {
       // console.log('hiding right arrow');
       this.xPos = -(imgKontainerWidth - displayMaskWidth);
+      // console.log('Hide right arrow: ', this.xPos);
       // this.fHideMe(this.rightArrowIcon);
       this._funksions.fElementVisibility(this.rightArrowIcon, 'hidden');
-    }
+    // }
     /*--- Resetting last commonCounter index based on photo strip width ---*/
-    if (this.xPos <= -(imgKontainerWidth - displayMaskWidth)) {
+    // if (this.xPos <= -(imgKontainerWidth - displayMaskWidth)) { //dupe
       this.endOfStrip = true;
-      this._funksions.fElementVisibility(this.rightArrowIcon, 'hidden');
+      // console.log('Rest commonCounter xPos: ', this.xPos);
+      // this._funksions.fElementVisibility(this.rightArrowIcon, 'hidden'); //duplicated
     } else {
       this.endOfStrip = false;
       // show right button when photo strip isn't at the end. happens when resizing screen.
@@ -118,11 +112,11 @@ export class CarouselService {
     }
 
     /*--- animation using GSAP ---*/
-    // const fCarouselSlide(elem) {
-      TweenMax.to(elem, 1, {x: this.xPos, ease: Power2.easeInOut});
-      // console.log('elem: ', elem);
-      // console.log('x: ', this.x);
-      // console.log('this.xPos: ', this.xPos);
-    // };
+      TweenMax.to(elem, 1, { x: this.xPos, ease: Power2.easeInOut});
+
+      console.log('endOfStrip: ', this.endOfStrip);
+      console.log('commonCounter: ', this.commonCounter);
+      console.log('imgKontainerWidth: ', imgKontainerWidth);
+
   }
 }

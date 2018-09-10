@@ -1,12 +1,14 @@
 
 
 
+
 // import { MasonModalCarouselService } from './../../services/mason-modal-carousel.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { MasonModalCarouselDataService } from './../../services/mason-modal-carousel-data.service';
 import { FunksionsService } from './../../services/funksions.service';
+import { CarouselService } from './../../services/carousel.service';
 
 @Component({
   selector: 'app-mason-modal-carousel',
@@ -23,7 +25,9 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
   public errorMsg = 'You got an error!';
 
   /*-= PopUp Modal Variables =---*/
-  public modalMaxWidth = '90vw';
+  // public modalMaxWidth = '50vw';
+  public screenWidth = window.innerWidth;
+  public modalWidthVW = '90vw'; // Math.round((this.screenWidth * .90));
   public isEscapeToClose = true;
   public isClickOutsideToClose = true;
 
@@ -36,7 +40,8 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
 
   constructor(private _mmcDataService: MasonModalCarouselDataService,
               private _popUp: MatDialog,
-              private _funksions: FunksionsService) { }
+              private _funksions: FunksionsService,
+              private _carousel: CarouselService) { }
 
   ngOnInit() {
     /*---=|••• OBSERVABLE •••|=---*/
@@ -49,6 +54,11 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
     },
     error => this.errorMsg = error); // ????????? Work on this error
     this._funksions.fDisplay(this.mainContainer, 'none');
+
+    /* clientWidth test */
+    // const cw = document.querySelector('.loading-kontainer');
+    // console.log('cw: ', cw.clientWidth);
+    // this._carousel.commonCounter = 0; // -(commonCounterLastIndex);
   }
 
   ngAfterViewInit() {
@@ -62,9 +72,10 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
 
   fOpenModal(xId, pathImg, img, title, description): void {
     const dialogRef = this._popUp.open(PopUpComponent, {
-      // maxWidth: this.modalMaxWidth, // '90vw',
-      height: '80vh',
-      data: { imgPath: pathImg, imahe: img, xId: xId, titolo: title, deskription: description },
+      maxWidth: this.modalWidthVW,
+        // this.modalWidthVW; // this._mmcDataService.modalMaxWidth + 'vw', // this.modalMaxWidth, // '90vw',
+      height: this._mmcDataService.modalHeight + 'px',
+      data: { imgPath: pathImg, imahe: img, xId: xId, titolo: title, deskription: description }
           // escapeToClose: this.isEscapeToClose,
           // clickOutsideToClose: this.isClickOutsideToClose,
     });
@@ -72,13 +83,18 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
     // console.log('xId: ', xId);
     // console.log('pathImg: ', pathImg);
     // console.log('img: ', img);
-    // console.log('title: ', title);
+    // console.log('dialogRef: ', dialogRef);
+
+    console.log('modalWidthVW: ', this.modalWidthVW);
+    // console.log('maxWidth: ', PopUpComponent.maxWidth);
+    console.log('******---= ', title, ' =---*****');
     // console.log('description: ', description);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`The dialog was closed: ${result}`);
-      // this.animal = result;
+      // title = result;
       // this.dialogResult = result;
+      // reset pop-up datas
     });
 
   }

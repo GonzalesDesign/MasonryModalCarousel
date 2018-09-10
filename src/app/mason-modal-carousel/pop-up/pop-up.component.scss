@@ -6,7 +6,29 @@
 $next-previous-color: white;
 $next-previous-background-color: $material-color-grey-500; // $mdc-theme-secondary;
 
-$borderForTesting: 1px solid rgb(252, 3, 252);
+$randomColorR: random(255);
+$randomColorG: random(100);
+$randomColorB: random(255);
+$borderForTesting: 1px solid rgb(240, 0, 252); // ($randomColorR, $randomColorG, $randomColorB); // (240, 0, 252);
+
+/* Modal */
+/* .mat-dialog-container{
+  width: 600px;
+}
+.cdk-overlay-pane {
+  width: 600px;
+}
+#cdk-overlay-0 {
+  max-width: 600px;
+} */
+
+.image-kontainer {
+  width: 70px;
+}
+
+ul#carousel-kontainer-id {
+  width: 700px;
+}
 
 /* Arrow buttons */
 .arrow-buttons-kontainer {

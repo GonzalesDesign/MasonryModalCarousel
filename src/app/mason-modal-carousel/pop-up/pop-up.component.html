@@ -5,9 +5,9 @@
   <div  id="modalKontainerId"
         #modalKontainerChild
         class="modalKontainer"
-        [style.width.vw]='70'
         >
         <!--
+              [style.maxWidth]='modalKontainerWidth'
               [style.display]="'flex'"
               [style.position]="'absolute'"
               [style.width.vw]='50'
@@ -16,23 +16,32 @@
       <div class="rlg-pop-title"
            [style.textTransform]="'uppercase'">
            CATEGORY: {{titolo}}
+           <br>
+           <div [style.textTransform]="'lowercase'">
+           modalKontainerWidth: {{modalKontainerWidth}} <br>
+           carouselMaskWidth: {{carouselMaskWidth}} <br>
+           fotoWidth: {{fotoWidth}}
+           </div>
       </div>
       <br>
-      <ul #carouselKontainerChild
-          id="carousel-kontainer-id"
-          class="carousel-kontainer"
+      <ul class="carousel-kontainer"
           [style.display]="'flex'"
-          [style.width]= "'100'"
           [style.margin]="'0'"
           [style.padding]="'0'"
           [style.overflow]="'hidden'"
           [style.border]="'1px solid red'"
+          [style.width.px]= 'carouselMaskWidth'
           >
-          <!--[style.width]= "'carouselKontainerWidth'" -->
+          <!--#carouselKontainerChild
+              id="carousel-kontainer-id"
+              [style.width]= 'carouselKontainerMaskWidth'
+              [style.width]= "'carouselKontainerWidth'" -->
 
           <li class="image-kontainer"
               *ngFor="let foto of imageToLoad; let i = index"
-              [style.listStyle]="'none'">
+              [style.listStyle]="'none'"
+              [style.width.px]= 'fotoWidth'
+              >
               <!-- class="imageCarousel"
               [style.width.px]= 'fotoWidth'
               [style.listStyle]="'none'"
@@ -62,12 +71,36 @@
 
       <!--= Carousel slider buttons =-->
       <div  id="arrow-buttons-kontainer-id" class="arrow-buttons-kontainer"
-            [style.width.px]= 'carouselKontainerWidth'
-            [style.height.vh]= '100'
-            [style.top.px]= '0'
-            [style.position]= "'absolute'"
+            [style.display]= 'flex'
+            [style.position]= "'relative'"
+            [style.top.px]= '- arrowButtonsKontainerYPos'
             >
-            <!-- [style.width.px]= 'carouselKontainerWidth'
+            <!--
+              arrowButtonsKontainerYPos
+            [style.top.vh]= '(- fotoHeight /2)'
+            [style.top.vh]= '- fotoHeight /2'
+            [style.width.px]= 'modalMaxWidth'
+            [style.display]= 'flex'
+            [style.height.vh]= '80'
+            [style.padding]= '0'
+            [style.margin]= '0'
+            [style.alignItems]= 'center'
+            [style.justifyContent]= 'center'
+            [style.top.px]= '0'
+            [style.left.vw]= '10'
+            [style.position]= "'absolute'"
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                display: -webkit-box;
+                display: -moz-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                [style.width.px]= 'carouselKontainerMaskWidth'
+                [style.width.px]= 'carouselKontainerWidth'
                 [style.height.vh]='fotoHeight'
                 [style.position]="'absolute'"
             -->
@@ -93,7 +126,9 @@
 
         <div id="right-button-kontainer-id"
               class="right-button-kontainer"
-              [style.left.px]= 'rightArrowButtonsKontainerXPos'>
+              [style.left.px]= 'rightArrowButtonsKontainerXPos'
+              [style.width.px]='btnKontainerWidth'
+              >
               <button mdcIconButton class="rlg-arrowIcon
                                            rlg-right-arrow
                                            rlg-font-dark-shadow

@@ -7,7 +7,7 @@
 * Copyright © 2018 GonzalesDesign
 * Platform: Angular 6
 * Service Name: FunksionsService
-* Version: 082518
+* Version: 090418
 * Note: Miscellaneous functions that can be called anywhere
 ***********************************************************/
 
@@ -155,6 +155,11 @@ import { TweenMax, TimelineMax, TweenLite, Power2, Power4, Elastic } from 'gsap'
 
   fTMxFrAlpha(e, tym, val, easing) {
     TweenMax.from(e, tym, {alpha: val, ease: easing});
+  }
+
+  /*- Setting width of an element. ----*/
+  fTMxToWidth(e, tym, val, easing) {
+    TweenMax.from(e, tym, {width: val, ease: easing});
   }
 
   /*--- GSAP2 Animation Engine: TimelineMax ---*/
