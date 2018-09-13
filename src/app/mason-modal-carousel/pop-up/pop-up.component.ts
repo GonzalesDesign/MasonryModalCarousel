@@ -31,15 +31,15 @@ export class PopUpComponent implements OnInit, AfterViewInit, AfterViewChecked {
   public screenWidth: number = window.innerWidth;
   // public modalKontainerId = '#modal-kontainer-id'; //
   // public modalKontainerId = document.getElementById('modalKontainerId');
-  public modalKontainerWidth: any;
+  public modalKontainerWidth: number; // any;
   // public modalMaxWidth: any; //  = this._mmcDataService.modalMaxWidth; // width info from service
   public modalMaxHeight = this._mmcDataService.modalHeight; // height info from service
 
   /*---= Carousel properties =---*/
-  public carouselMaskWidth: any;
+  public carouselMaskWidth: number; // any;
   // public carouselKontainerId = '#carousel-kontainer-id'; // ul: photos strip
   // public carouselKontainer = '.carousel-kontainer';
-  public carouselFotoStripWidth: any;
+  public carouselFotoStripWidth: number; // any;
   // public totalImgsWidth: number;
   public photoStripSetCount: number; // foto strip width / imgs to display = set
   public commonCounterLastIndex: number;
@@ -48,20 +48,20 @@ export class PopUpComponent implements OnInit, AfterViewInit, AfterViewChecked {
   public imageKontainer = '.image-kontainer';
   public matDialogKontainer = '.mat-dialog-container'; // material modal
   public matDialogKontainerClass = document.getElementsByClassName('mat-dialog-container'); // material modal
-  public fotoWidth?: any;
+  public fotoWidth?: number; // any;
   public fotoHeight = 70;
   public marginsx = 100;
   public imgsToDisplay: number;
   public photosLength: number;
   /*---= Carousel buttons properties =---*/
   public arrowButtonsKontainer = ('.arrow-buttons-kontainer');
-  public arrowButtonsKontainerYPos: any;
+  public arrowButtonsKontainerYPos: number; // any;
   public leftArrowButtonsKontainer = ('.left-button-kontainer');
   public rightArrowButtonsKontainer = ('.right-button-kontainer');
-  public rightArrowButtonsKontainerXPos: any;
+  public rightArrowButtonsKontainerXPos: number; // any;
   public btnKontainerWidth = 200;
 
-  public testWidth: any;
+  public testWidth: number; // any;
 
 
   constructor(
@@ -122,6 +122,10 @@ export class PopUpComponent implements OnInit, AfterViewInit, AfterViewChecked {
     console.log('|-----= fCarouselInit() =-----|');
     this.photosLength = this.imageToLoad.length;
     const btnKontainerPadding = 72; // 24;
+    /* if (this._carousel.commonCounter === NaN) { // test
+      this._carousel.commonCounter = 0;
+      console.log('NaN: _carousel.commonCounter: ', this._carousel.commonCounter);
+    } */
 
     // console.log('|-----= Modal Width =-----|');
       this.modalKontainerWidth = Math.round(this.screenWidth * .90);
@@ -138,12 +142,12 @@ export class PopUpComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
     // console.log('|-----= Carousel Strip Width =-----|');
       this.carouselFotoStripWidth = this.fotoWidth * this.photosLength;
-      console.log('carouselFotoStripWidth: ', this.carouselFotoStripWidth);
+    //  console.log('carouselFotoStripWidth: ', this.carouselFotoStripWidth);
 
       /*--- Resetting photo strip x position ---*/
       // this.totalImgsWidth = this.carouselFotoStripWidth; // total width of all images side by side
-      this.photoStripSetCount = (this.carouselFotoStripWidth / this.modalKontainerWidth);
-      this.commonCounterLastIndex = Math.round(this.photoStripSetCount - 1);
+      this.photoStripSetCount = Math.round((this.carouselFotoStripWidth / this.modalKontainerWidth));
+      this.commonCounterLastIndex = this.photoStripSetCount - 1; // Math.round(this.photoStripSetCount - 1);
       // console.log('totalImgsWidth: ', this.totalImgsWidth);
       console.log('photoStripSetCount: ', this.photoStripSetCount);
       console.log('commonCounterLastIndex: ', this.commonCounterLastIndex);
@@ -227,6 +231,7 @@ export class PopUpComponent implements OnInit, AfterViewInit, AfterViewChecked {
     if (this._carousel.endOfStrip) {
       this._carousel.commonCounter = -(this.commonCounterLastIndex);
     }
+
     /*---- Media queries ----*/
     if ( this.screenWidth >= 1300 ) {
       this.imgsToDisplay = 4;

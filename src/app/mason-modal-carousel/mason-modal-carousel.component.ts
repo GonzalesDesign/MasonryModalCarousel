@@ -36,12 +36,13 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
   public loadingKontainer = '.loading-kontainer';
 
   /*-= Timer =----*/
-  public timeout = 1000;
+  public timeout = 1000; // for displaying loader time in correspond with the loader removal
 
   constructor(private _mmcDataService: MasonModalCarouselDataService,
               private _popUp: MatDialog,
               private _funksions: FunksionsService,
-              private _carousel: CarouselService) { }
+              // private _carousel: CarouselService
+            ) { }
 
   ngOnInit() {
     /*---=|••• OBSERVABLE •••|=---*/
@@ -87,12 +88,14 @@ export class MasonModalCarouselComponent implements OnInit, AfterViewInit {
 
     console.log('modalWidthVW: ', this.modalWidthVW);
     // console.log('maxWidth: ', PopUpComponent.maxWidth);
-    console.log('******---= ', title, ' =---*****');
+    console.log('******---= Open: ', title, ' =---*****');
     // console.log('description: ', description);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`The dialog was closed: ${result}`);
-      // title = result;
+      console.log(`Closed : ${title} modal. ••••••`);
+      // this._carousel.commonCounter = 0;
+      // console.log(`Common Counter Value : ${this._carousel.commonCounter}.`);
+      // result =  title;
       // this.dialogResult = result;
       // reset pop-up datas
     });

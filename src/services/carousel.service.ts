@@ -48,15 +48,16 @@ export class CarouselService {
     // this.fImageWidth(img, this.displayMaskWidth);
   } */
 
-  public fSlideCarousel2(elem, imgWidth, imgsToDisplay) {
+  /* public fSlideCarousel2(elem, imgWidth, imgsToDisplay) {
     this.commonCounter--; // click counter
     const displayMaskWidth = (imgWidth * imgsToDisplay); // displayMaskWidth: photo strip mask width
     this.xPos = (displayMaskWidth * this.commonCounter); // xPos: photo strip horizontal position
     TweenMax.to(elem, 1, {x: this.xPos, ease: Power2.easeInOut}); // positioning photo strip horizontally
   }
+ */
 
   public fSlideCarousel(elem, slideDirection, imgWidth, imgsToDisplay, imgKontainerWidth) {
-
+    // this.commonCounter = 0;
     const displayMaskWidth = (imgWidth * imgsToDisplay); // carousel mask width
 
     /*--= if right button is clicked, image kontainer slides left =--*/
@@ -65,6 +66,11 @@ export class CarouselService {
       this.xPos = (displayMaskWidth * this.commonCounter);
       // this.fShowMe(this.leftArrowIcon); // left arrow is disabled inititally
       this._funksions.fElementVisibility(this.leftArrowIcon, 'visible'); // show hidden left arrow
+
+      /* if (this.commonCounter === NaN) { // test
+        this.commonCounter = 0;
+        console.log('NaN: commonCounter: ', this.commonCounter);
+      } */
 
       console.log('slide=left: commonCounter: ', this.commonCounter);
       console.log('slideDirection: ', slideDirection);
@@ -76,20 +82,47 @@ export class CarouselService {
       this.xPos = (displayMaskWidth * this.commonCounter);
       this._funksions.fElementVisibility(this.rightArrowIcon, 'visible'); // show hidden right arrow
 
+      /* if (this.commonCounter === NaN) { // test
+        this.commonCounter = 0;
+        console.log('NaN: commonCounter: ', this.commonCounter);
+      } */
+
       console.log('slide=right: commonCounter: ', this.commonCounter);
 
-    } else if ( slideDirection === 'none' ) { // ???
-      this.commonCounter = this.commonCounter;
-      this.xPos = (displayMaskWidth * this.commonCounter);
-      console.log('slide=none: commonCounter: ', this.commonCounter);
+    } else if ( slideDirection === 'none' ) { // called inside fCarouselInit()
+      const counter = this.commonCounter;
+      this.xPos = (displayMaskWidth * counter);
+      // this.commonCounter = this.commonCounter;
+      // this.xPos = (displayMaskWidth * this.commonCounter);
+
+      /* if (this.commonCounter === NaN) { // test
+        this.commonCounter = 0;
+        console.log('NaN: commonCounter: ', this.commonCounter);
+      } */
+
+      console.log('slide=none: counter: ', counter);
+      console.log('isNaN(counter): ', isNaN(counter));
+      console.log('xPos: ', this.xPos);
+      // console.log('displayMaskWidth: ', displayMaskWidth);
+
+      /*•••= Don't know why, sometimes, it makes "counter" value
+      to NaN when you pop a modal and click on the right arrow,
+      image strip slides left || resize the screen then closed
+      the pop up and open another pop up, counter becomes NaN.
+      Code below forced the counter to reset to zero when isNaN:true =•••*/
+      if (isNaN(counter)) {
+        this.commonCounter = 0; 
+        console.log('NaN: commonCounter: ', this.commonCounter);
+      }
     }
+
 
     /*--- When to hide the left and right arrows ---*/
     if (this.xPos >= 0) {
       this.xPos = 0;
       this.commonCounter = 0;
       this.endOfStrip = false;
-      // console.log('Hide left arrow: ', this.xPos);
+      console.log('xPos >= 0: ', this.xPos);
       this._funksions.fElementVisibility(this.leftArrowIcon, 'hidden');
 
     } else if (this.xPos <= -(imgKontainerWidth - displayMaskWidth)) {
@@ -105,6 +138,7 @@ export class CarouselService {
       this.endOfStrip = true;
       // console.log('Rest commonCounter xPos: ', this.xPos);
       // this._funksions.fElementVisibility(this.rightArrowIcon, 'hidden'); //duplicated
+      console.log('xPos <= 0: ', this.xPos);
     } else {
       this.endOfStrip = false;
       // show right button when photo strip isn't at the end. happens when resizing screen.
@@ -114,9 +148,10 @@ export class CarouselService {
     /*--- animation using GSAP ---*/
       TweenMax.to(elem, 1, { x: this.xPos, ease: Power2.easeInOut});
 
-      console.log('endOfStrip: ', this.endOfStrip);
+
+      // console.log('endOfStrip: ', this.endOfStrip);
       console.log('commonCounter: ', this.commonCounter);
-      console.log('imgKontainerWidth: ', imgKontainerWidth);
+      // console.log('imgKontainerWidth: ', imgKontainerWidth);
 
   }
 }

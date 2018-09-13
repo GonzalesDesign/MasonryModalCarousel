@@ -6,10 +6,10 @@
 $next-previous-color: white;
 $next-previous-background-color: $material-color-grey-500; // $mdc-theme-secondary;
 
-$randomColorR: random(255);
-$randomColorG: random(100);
-$randomColorB: random(255);
-$borderForTesting: 1px solid rgb(240, 0, 252); // ($randomColorR, $randomColorG, $randomColorB); // (240, 0, 252);
+// $randomColorR: random(255);
+// $randomColorG: random(100);
+// $randomColorB: random(255);
+$borderForTesting: 0px solid rgb(218, 252, 0); // ($randomColorR, $randomColorG, $randomColorB); // (240, 0, 252);
 
 /* Modal */
 /* .mat-dialog-container{
@@ -57,7 +57,7 @@ ul#carousel-kontainer-id {
       //   justify-content: flex-start;
       position: relative;
       // left: 28px;
-      margin-left: 28px;
+      // margin-left: 28px;
       width: 200px;
       height: 90px;
       // background-color: $next-previous-background-color;
@@ -131,5 +131,16 @@ ul#carousel-kontainer-id {
       //   overflow: hidden;
       color: $next-previous-color;
     //   border: 1px solid yellowgreen;
+    }
+
+    /*-- Background color for the arrow button's circular bg --*/
+    /* .mdc-icon-button::before, .mdc-icon-button::after {
+      background-color: $rlgColorSecondary;
+    } */
+    .mdc-icon-button::before {
+      background-color: white;
+    }
+    .mdc-icon-button::after {
+        background-color: $rlgColorSecondary;
     }
   }

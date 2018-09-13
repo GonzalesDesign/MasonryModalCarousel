@@ -6,7 +6,7 @@
 @import './../../styles.scss';
 
 $borderForTesting: 0px solid rgb(243, 42, 243);
-$loaderColor: $rlgColorSecondary;
+$loaderColor: $rlgColorPrimaryMid;
 
 .loading-kontainer {
         display: flex;
@@ -47,3 +47,4 @@ $loaderColor: $rlgColorSecondary;
         } */
 
 }
+
